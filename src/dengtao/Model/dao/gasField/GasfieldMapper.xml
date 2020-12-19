@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <!-- namespace 绑定对应的dao/mapper接口 -->
+<mapper namespace="dengtao.Model.dao.gasField.GasfieldMapper">
+  <select id="getAllGasfield" resultType="dengtao.Model.pojo.Gasfield">
+    select * from `GasField`;
+  </select>
+  
+  <select id="getAllGasfieldByArea" parameterType="map"  resultType="dengtao.Model.pojo.Gasfield">
+    select * from `GasField` where `area`=#{area};
+  </select>
+  
+  <select id="getAllGasfieldByType" parameterType="map"  resultType="dengtao.Model.pojo.Gasfield">
+    select * from `GasField` where `type`=#{type};
+  </select>
+  
+  <select id="getAllGasfieldByDepthType" parameterType="map"  resultType="dengtao.Model.pojo.Gasfield">
+    select * from `GasField` where `depthType`=#{depthType};
+  </select>
+  
+  <insert id="addGasfield" parameterType="map">
+  insert into `GasField`(`name`, `area`, `type`, `depthType`, `reserves`) values(#{name}, #{area},#{type}, #{depthType}, #{reserves});
+  </insert>
+  
+  <update id="modifyGasField" parameterType="map">
+  update `GasField` set `name`=#{name},`area`=#{area},`depthType`=#{depthType},`reserves`=#{reserves} where `id`=`id`;
+  </update>
+  
+  <delete id="deleteGasfield" parameterType="map">
+  delete from `GasField` where `id`=#{id};
+  </delete>
+  
+</mapper>
